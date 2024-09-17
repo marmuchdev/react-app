@@ -12,6 +12,7 @@ const ProductCard = ({ product }) => {
   };
   const addProductToBasket = (e) => {
     e.stopPropagation();
+    console.log("added to basket")
     alert("Added to the basket!");
   };
   return (
@@ -26,6 +27,8 @@ const ProductCard = ({ product }) => {
           <div className="card-body">
             <h5 className="card-title">{product.name}</h5>
             <p className="card-text">Price: £{product.price}</p>
+            <p className="card-text">Quantity: {product.stock_count}</p>
+
             <a
               className="btn btn-primary"
               onClick={(e) => addProductToBasket(e)}
@@ -47,6 +50,7 @@ ProductCard.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
+    stock_count: PropTypes.number.isRequired,
   }).isRequired,
 };
 
