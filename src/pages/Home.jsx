@@ -1,13 +1,29 @@
+import { useState , useEffect } from "react";
+import ProductList from "../components/ProductList";
 
-const Home = (props) => {
-    //Accessing the props object
-    // we can access the "className" prop to customize the class of the h1 element
-    const {className} = props;
-  return <h1 className={className}>Home</h1>;
-};
-//Default props object that contains certain predefined properties and methods.
-Home.defaultProps = {
-    className: 'home-title', // seting default className for h1 element
+
+const Home = () => {
+  //state that stores products data
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const initialProducts = [
+      { id: 1, name: "Product 1", price: 10 },
+      { id: 2, name: "Product 2", price: 20 },
+      { id: 3, name: "Product 3", price: 30 },
+      { id: 4, name: "Product 4", price: 40 },
+      { id: 5, name: "Product 5", price: 50 },
+    ];
+
+    setProducts(initialProducts); //assign to our empty array
+  }, []);
+  return (
+  <>
+  <h2>Welcome to our Online Store</h2>
+  
+  <ProductList products={products} />
+  </>
+  );
 };
 
 export default Home;
